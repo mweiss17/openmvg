@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
   Image<unsigned char> imageL, imageR;
   ReadImage(jpg_filenameL.c_str(), &imageL);
   ReadImage(jpg_filenameR.c_str(), &imageR);
-
+  -
   // Setup 2 camera intrinsics
   cameras::Intrinsic_Spherical
     cameraL(imageL.Width(), imageL.Height()),

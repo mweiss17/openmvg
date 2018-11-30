@@ -45,12 +45,10 @@ bool exportToPly(const std::vector<Vec3> & vec_points,
   const std::string & sFileName);
 
 int main() {
-
   const std::string sInputDir = stlplus::folder_up(string(THIS_SOURCE_DIR))
-    + "/imageData/SceauxCastle/";
-  const string jpg_filenameL = sInputDir + "100_7101.jpg";
-  const string jpg_filenameR = sInputDir + "100_7102.jpg";
-
+    + "/imageData/traversal_images/room_test/";
+  const string jpg_filenameL = sInputDir + "HET_0023_1.jpg";
+  const string jpg_filenameR = sInputDir + "HET_0023_2.jpg";
   Image<unsigned char> imageL, imageR;
   ReadImage(jpg_filenameL.c_str(), &imageL);
   ReadImage(jpg_filenameR.c_str(), &imageR);
@@ -238,7 +236,7 @@ int main() {
       std::vector<Vec3> vec_camPos;
       vec_camPos.push_back( pose0.center() );
       vec_camPos.push_back( pose1.center() );
-      exportToPly(vec_3DPoints, vec_camPos, "EssentialGeometry.ply");
+      exportToPly(vec_3DPoints, vec_camPos, "/Users/marti/Desktop/TEST.ply");
   }
   return EXIT_SUCCESS;
 }
@@ -268,7 +266,7 @@ bool exportToPly(const std::vector<Vec3> & vec_points,
 {
   std::ofstream outfile;
   outfile.open(sFileName.c_str(), std::ios_base::out);
-
+  printf("%s", sFileName.c_str());
   outfile << "ply"
     << '\n' << "format ascii 1.0"
     << '\n' << "element vertex " << vec_points.size()+vec_camPos.size()
